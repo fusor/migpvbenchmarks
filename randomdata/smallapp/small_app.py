@@ -11,7 +11,7 @@ if len(files_in_volume) > 0:
 
 volume_size = os.getenv("VOLUME_CAPACITY")
 sizes = {
-    "60Mi": None,
+    "60Mi": 52428800,
     "2Gi": 1073741824,
     "12Gi": 10737418240,
     "115Gi": 107374182400,
@@ -26,7 +26,7 @@ if volume_size not in sizes.keys():
 # Create files with random data
 # Since urandom has a buffer, we should a pass a safe value to it, code below creates
 # either 50Mb file or some amount of 1GB files
-if volume_size == "50Mi":
+if volume_size == "60Mi":
     files_count = 1
     file_size = 52428800
 else:
