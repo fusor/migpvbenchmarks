@@ -189,17 +189,36 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift1",
+        "name": "hello-pod1",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift1"
+          "name": "hello-pod1"
         }
       },
       "spec": {
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "containers": [
           {
-            "name": "hello-openshift1",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod1",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -209,8 +228,8 @@
             "resources": {},
             "volumeMounts": [
               {
-                "name": "hellovolume1",
-                "mountPath": "/hellovolume1"
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
               }
             ],
             "terminationMessagePath": "/dev/termination-log",
@@ -224,10 +243,14 @@
         ],
         "volumes": [
           {
-            "name": "hellovolume1",
+            "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc1"
             }
+          },
+          {
+            "name": "scriptdir",
+            "mountPath": "/scriptdir"
           }
         ],
         "restartPolicy": "Always",
@@ -240,17 +263,36 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift2",
+        "name": "hello-pod2",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift2"
+          "name": "hello-pod2"
         }
       },
       "spec": {
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "containers": [
           {
-            "name": "hello-openshift2",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod2",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -260,8 +302,8 @@
             "resources": {},
             "volumeMounts": [
               {
-                "name": "hellovolume2",
-                "mountPath": "/hellovolume2"
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
               }
             ],
             "terminationMessagePath": "/dev/termination-log",
@@ -275,10 +317,14 @@
         ],
         "volumes": [
           {
-            "name": "hellovolume2",
+            "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc2"
             }
+          },
+          {
+            "name": "scriptdir",
+            "mountPath": "/scriptdir"
           }
         ],
         "restartPolicy": "Always",
@@ -291,17 +337,36 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift3",
+        "name": "hello-pod3",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift3"
+          "name": "hello-pod3"
         }
       },
       "spec": {
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "containers": [
           {
-            "name": "hello-openshift3",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod3",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -311,8 +376,8 @@
             "resources": {},
             "volumeMounts": [
               {
-                "name": "hellovolume3",
-                "mountPath": "/hellovolume3"
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
               }
             ],
             "terminationMessagePath": "/dev/termination-log",
@@ -326,10 +391,14 @@
         ],
         "volumes": [
           {
-            "name": "hellovolume3",
+            "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc3"
             }
+          },
+          {
+            "name": "scriptdir",
+            "mountPath": "/scriptdir"
           }
         ],
         "restartPolicy": "Always",
@@ -342,17 +411,36 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift4",
+        "name": "hello-pod4",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift4"
+          "name": "hello-pod4"
         }
       },
       "spec": {
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "containers": [
           {
-            "name": "hello-openshift4",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod4",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -362,8 +450,8 @@
             "resources": {},
             "volumeMounts": [
               {
-                "name": "hellovolume4",
-                "mountPath": "/hellovolume4"
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
               }
             ],
             "terminationMessagePath": "/dev/termination-log",
@@ -377,10 +465,14 @@
         ],
         "volumes": [
           {
-            "name": "hellovolume4",
+            "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc4"
             }
+          },
+          {
+            "name": "scriptdir",
+            "mountPath": "/scriptdir"
           }
         ],
         "restartPolicy": "Always",
@@ -393,17 +485,36 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift5",
+        "name": "hello-pod5",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift5"
+          "name": "hello-pod5"
         }
       },
       "spec": {
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "containers": [
           {
-            "name": "hello-openshift5",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod5",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -413,8 +524,8 @@
             "resources": {},
             "volumeMounts": [
               {
-                "name": "hellovolume5",
-                "mountPath": "/hellovolume5"
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
               }
             ],
             "terminationMessagePath": "/dev/termination-log",
@@ -428,10 +539,14 @@
         ],
         "volumes": [
           {
-            "name": "hellovolume5",
+            "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc5"
             }
+          },
+          {
+            "name": "scriptdir",
+            "mountPath": "/scriptdir"
           }
         ],
         "restartPolicy": "Always",
@@ -444,17 +559,36 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift6",
+        "name": "hello-pod6",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift6"
+          "name": "hello-pod6"
         }
       },
       "spec": {
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "containers": [
           {
-            "name": "hello-openshift6",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod6",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -464,8 +598,8 @@
             "resources": {},
             "volumeMounts": [
               {
-                "name": "hellovolume6",
-                "mountPath": "/hellovolume6"
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
               }
             ],
             "terminationMessagePath": "/dev/termination-log",
@@ -479,10 +613,14 @@
         ],
         "volumes": [
           {
-            "name": "hellovolume6",
+            "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc6"
             }
+          },
+          {
+            "name": "scriptdir",
+            "mountPath": "/scriptdir"
           }
         ],
         "restartPolicy": "Always",
@@ -495,17 +633,36 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift7",
+        "name": "hello-pod7",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift7"
+          "name": "hello-pod7"
         }
       },
       "spec": {
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "containers": [
           {
-            "name": "hello-openshift",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -515,8 +672,8 @@
             "resources": {},
             "volumeMounts": [
               {
-                "name": "hellovolume7",
-                "mountPath": "/hellovolume7"
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
               }
             ],
             "terminationMessagePath": "/dev/termination-log",
@@ -530,10 +687,14 @@
         ],
         "volumes": [
           {
-            "name": "hellovolume7",
+            "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc7"
             }
+          },
+          {
+            "name": "scriptdir",
+            "mountPath": "/scriptdir"
           }
         ],
         "restartPolicy": "Always",
@@ -546,17 +707,36 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift8",
+        "name": "hello-pod8",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift8"
+          "name": "hello-pod8"
         }
       },
       "spec": {
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "containers": [
           {
-            "name": "hello-openshift8",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod8",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -566,8 +746,8 @@
             "resources": {},
             "volumeMounts": [
               {
-                "name": "hellovolume8",
-                "mountPath": "/hellovolume8"
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
               }
             ],
             "terminationMessagePath": "/dev/termination-log",
@@ -581,10 +761,14 @@
         ],
         "volumes": [
           {
-            "name": "hellovolume8",
+            "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc8"
             }
+          },
+          {
+            "name": "scriptdir",
+            "mountPath": "/scriptdir"
           }
         ],
         "restartPolicy": "Always",
@@ -597,17 +781,36 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift9",
+        "name": "hello-pod9",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift9"
+          "name": "hello-pod9"
         }
       },
       "spec": {
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "containers": [
           {
-            "name": "hello-openshift9",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod9",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -617,8 +820,8 @@
             "resources": {},
             "volumeMounts": [
               {
-                "name": "hellovolume9",
-                "mountPath": "/hellovolume9"
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
               }
             ],
             "terminationMessagePath": "/dev/termination-log",
@@ -632,10 +835,14 @@
         ],
         "volumes": [
           {
-            "name": "hellovolume9",
+            "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc9"
             }
+          },
+          {
+            "name": "scriptdir",
+            "mountPath": "/scriptdir"
           }
         ],
         "restartPolicy": "Always",
@@ -648,17 +855,36 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift10",
+        "name": "hello-pod10",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift10"
+          "name": "hello-pod10"
         }
       },
       "spec": {
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "containers": [
           {
-            "name": "hello-openshift10",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod10",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -668,8 +894,8 @@
             "resources": {},
             "volumeMounts": [
               {
-                "name": "hellovolume10",
-                "mountPath": "/hellovolume10"
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
               }
             ],
             "terminationMessagePath": "/dev/termination-log",
@@ -683,10 +909,14 @@
         ],
         "volumes": [
           {
-            "name": "hellovolume10",
+            "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc10"
             }
+          },
+          {
+            "name": "scriptdir",
+            "mountPath": "/scriptdir"
           }
         ],
         "restartPolicy": "Always",
@@ -694,144 +924,6 @@
         "serviceAccount": ""
       },
       "status": {}
-    },
-    {
-      "apiVersion": "batch/v1",
-      "kind": "Job",
-      "metadata": {
-        "name": "dataseed"
-      },
-      "spec": {
-        "template": {
-          "spec": {
-            "restartPolicy": "Never",
-            "containers": [
-              {
-                "name": "dataseed",
-                "image": "docker.io/ademicev/bigapp",
-                "env": [
-                  {
-                    "name": "VOLUME_CAPACITY",
-                    "value": "${VOLUME_CAPACITY}"
-                  }
-                ],
-                "volumeMounts": [
-                  {
-                    "name": "hellovolume1",
-                    "mountPath": "/hellovolume1"
-                  },
-                  {
-                    "name": "hellovolume2",
-                    "mountPath": "/hellovolume2"
-                  },
-                  {
-                    "name": "hellovolume3",
-                    "mountPath": "/hellovolume3"
-                  },
-                  {
-                    "name": "hellovolume4",
-                    "mountPath": "/hellovolume4"
-                  },
-                  {
-                    "name": "hellovolume5",
-                    "mountPath": "/hellovolume5"
-                  },
-                  {
-                    "name": "hellovolume6",
-                    "mountPath": "/hellovolume6"
-                  },
-                  {
-                    "name": "hellovolume7",
-                    "mountPath": "/hellovolume7"
-                  },
-                  {
-                    "name": "hellovolume8",
-                    "mountPath": "/hellovolume8"
-                  },
-                  {
-                    "name": "hellovolume9",
-                    "mountPath": "/hellovolume9"
-                  },
-                  {
-                    "name": "hellovolume10",
-                    "mountPath": "/hellovolume10"
-                  },
-                  {
-                    "name": "scriptdir",
-                    "mountPath": "/scriptdir"
-                  }
-                ]
-              }
-            ],
-            "volumes": [
-              {
-                "name": "hellovolume1",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc1"
-                }
-              },
-              {
-                "name": "hellovolume2",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc2"
-                }
-              },
-              {
-                "name": "hellovolume3",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc3"
-                }
-              },
-              {
-                "name": "hellovolume4",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc4"
-                }
-              },
-              {
-                "name": "hellovolume5",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc5"
-                }
-              },
-              {
-                "name": "hellovolume6",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc6"
-                }
-              },
-              {
-                "name": "hellovolume7",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc7"
-                }
-              },
-              {
-                "name": "hellovolume8",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc8"
-                }
-              },
-              {
-                "name": "hellovolume9",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc9"
-                }
-              },
-              {
-                "name": "hellovolume10",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc10"
-                }
-              },
-              {
-                "name": "scriptdir",
-                "emptyDir": {}
-              }
-            ]
-          }
-        }
-      }
     }
   ],
   "parameters": [

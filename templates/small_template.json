@@ -14,7 +14,7 @@
       "spec": {
         "storageClassName": "${STORAGE_CLASS}",
         "accessModes": [
-          "ReadWriteMany"
+          "ReadWriteOnce"
         ],
         "resources": {
           "requests": {
@@ -27,17 +27,17 @@
       "kind": "Pod",
       "apiVersion": "v1",
       "metadata": {
-        "name": "hello-openshift",
+        "name": "hello-pod",
         "creationTimestamp": null,
         "labels": {
-          "name": "hello-openshift"
+          "name": "hello-pod"
         }
       },
       "spec": {
         "containers": [
           {
-            "name": "hello-openshift",
-            "image": "openshift/hello-openshift",
+            "name": "hello-pod",
+            "image": "docker.io/nginxdemos/hello",
             "ports": [
               {
                 "containerPort": 8080,
@@ -60,12 +60,35 @@
             }
           }
         ],
+        "initContainers": [
+          {
+            "name": "dataseed",
+            "image": "docker.io/ademicev/randomdata",
+            "env": [
+              {
+                "name": "VOLUME_CAPACITY",
+                "value": "${VOLUME_CAPACITY}"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "hellovolume",
+                "mountPath": "/hellovolume"
+              }
+            ],
+            "imagePullPolicy": "IfNotPresent"
+          }
+        ],
         "volumes": [
           {
             "name": "hellovolume",
             "persistentVolumeClaim": {
               "claimName": "hellopod-pvc"
             }
+          },
+          {
+            "name": "scriptdir",
+            "emptyDir": {}
           }
         ],
         "restartPolicy": "Always",
@@ -73,50 +96,6 @@
         "serviceAccount": ""
       },
       "status": {}
-    },
-    {
-      "apiVersion": "batch/v1",
-      "kind": "Job",
-      "metadata": {
-        "name": "dataseed"
-      },
-      "spec": {
-        "template": {
-          "spec": {
-            "restartPolicy": "Never",
-            "containers": [
-              {
-                "name": "dataseed",
-                "image": "docker.io/ademicev/smallapp",
-                "env": [
-                  {
-                    "name": "VOLUME_CAPACITY",
-                    "value": "${VOLUME_CAPACITY}"
-                  }
-                ],
-                "volumeMounts": [
-                  {
-                    "name": "hellovolume",
-                    "mountPath": "/hellovolume"
-                  }
-                ]
-              }
-            ],
-            "volumes": [
-              {
-                "name": "hellovolume",
-                "persistentVolumeClaim": {
-                  "claimName": "hellopod-pvc"
-                }
-              },
-              {
-                "name": "scriptdir",
-                "emptyDir": {}
-              }
-            ]
-          }
-        }
-      }
     }
   ],
   "parameters": [

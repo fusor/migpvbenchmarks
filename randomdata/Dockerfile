@@ -4,4 +4,4 @@ COPY . script/
 
 WORKDIR /script
 
-CMD [ "python", "./small_app.py" ]
+CMD [ "python", "./random_data.py" ]

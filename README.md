@@ -72,9 +72,9 @@ The following seed scripts are used automatically as part of deploying the scena
 
 ## Templates
 
-* `templates/big_template.json` - openshift template for creating 10 pods, 10 PVC and 1 Job for seeding PVs with data. Requires 2 arguments: VOLUME_CAPACITY, STORAGE_CLASS. Example usage: `oc process -f big_template.json -p VOLUME_CAPACITY=1Gi -p STORAGE_CLASS=nfs1 | oc create -f - `
+* `templates/big_template.json` - openshift template for creating 10 pods, 10 PVC and 1 Job for seeding PVs with data. Requires 2 arguments: VOLUME_CAPACITY, STORAGE_CLASS. Example usage: `oc process -f big_template.json -p VOLUME_CAPACITY=2Gi -p STORAGE_CLASS=nfs1 | oc create -f - `
 
-* `templates/small_template.json` - openshift template for creating 1 pods, 1 PVC and 1 Job for seeding PV with data. Requires 2 arguments: VOLUME_CAPACITY, STORAGE_CLASS. Example usage: `oc process -f small_template.json -p VOLUME_CAPACITY=1Gi -p STORAGE_CLASS=nfs1 | oc create -f - `
+* `templates/small_template.json` - openshift template for creating 1 pods, 1 PVC and 1 Job for seeding PV with data. Requires 2 arguments: VOLUME_CAPACITY, STORAGE_CLASS. Example usage: `oc process -f small_template.json -p VOLUME_CAPACITY=2Gi -p STORAGE_CLASS=nfs1 | oc create -f - `
 
 * `templates/migration_resources.json` - openshift template for creating a MigPlan and associated MigMigration.
 
@@ -90,4 +90,4 @@ The following seed scripts are used automatically as part of deploying the scena
 
   * big_template
     * 2Gi - 1Gi of actual data on PV
-    * 11Gi - 10Gi of actual data on PV
+    * 12Gi - 10Gi of actual data on PV

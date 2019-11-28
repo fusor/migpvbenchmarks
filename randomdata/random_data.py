@@ -4,8 +4,14 @@ import sys
 print("Attempting to fill volume with data")
 
 # fail if volume not empty
-files_in_volume = os.listdir('/hellovolume')
-if len(files_in_volume) > 0:
+folder = '/hellovolume'
+folder_size = 0
+for (path, dirs, files) in os.walk(folder):
+  for file in files:
+    filename = os.path.join(path, file)
+    folder_size += os.path.getsize(filename)
+
+if folder_size > 1048576 * 45:
     print("Volume directory is not empty, exiting")
     sys.exit(2)
 
